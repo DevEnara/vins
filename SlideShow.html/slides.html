@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>images</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slideshow">
+            <img src="/about.jpg">
+            <img src="/basketball.png">
+            <img src="/library.png">
+            <img src="/cafeteria.png">
+        </div>
+        <div class="slide left">
+            <span onclick="slide_slide(-1)" class="fa fa-angle-left">&#10094</span>
+        </div>
+        <div class="slide right">
+            <span onclick="slide_slide(1)"class="fa fa-angle-right">&#10095</span>
+        </div>
+        </div>
+        <div class="btn">
+            <span onclick="btn_slide(1)"></span>
+            <span onclick="btn_slide(2)"></span>
+            <span onclick="btn_slide(3)"></span>
+            <span onclick="btn_slide(4)"></span>
+        </div>
+    </div>
+
+
+    <script>
+        var indexValue = 1;
+        showImg(indexValue);
+        
+        function btn_slide(e){showImg(indexValue = e);}
+        function slide_slide(e){showImg(indexValue += e);}
+        function showImg(e){
+            var i;
+            const img = document.querySelectorAll('img')
+            const btn = document.querySelectorAll('.btn span')
+            if(e > img.length){indexValue = 1}
+            if (e < 1){indexValue = img.length}
+            for(i = 0; i < img.length; i++){
+                img[i].style.display = 'none';
+            }
+            for(i = 0; i < btn.length; i++){
+                btn[i].style.background = "rgba(150, 11, 11, 0.1)";
+            }
+            img[indexValue-1].style.display = 'block';
+            btn[indexValue-1].style.background ='white';
+        }
+    </script>
+</body>
+</html>
