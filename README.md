@@ -1,1 +1,1 @@
-# vins
+# slideshow.project
